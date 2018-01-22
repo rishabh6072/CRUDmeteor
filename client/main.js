@@ -178,4 +178,7 @@ Template.registerHelper('equals', function (a, b) {
 
 
 Template.showpage.helpers({
+  list(){
+    return 
+  }
 });
