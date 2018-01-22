@@ -1,0 +1,92 @@
+<head>
+  <title>crudpractice</title>
+  <link href="https://fonts.googleapis.com/css?family=Kavivanar" rel="stylesheet">
+  <script>
+function myFunction() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+
+</script>
+</head>
+
+<body class="container">
+<div class="adddatatemp">
+  <!-- {{> adddata}} -->
+</div>
+  <!-- {{> display}} -->
+</body>
+
+<template name="homeLayout">
+  <h1>CRUD Practice</h1>
+
+  {{> Template.dynamic template=input }}
+  {{> Template.dynamic template=table }}
+</template>
+
+<template name="adddata">
+
+        <form class="{{#if nm}}update{{else}}add{{/if}}">
+            <input type="text" name="name" placeholder="Name" value={{nm}} required title="Type in a name">
+            <input type="text" name="city" placeholder="City" value={{ct}} required title="Type in a city">
+            <input type="text" name="age" placeholder="Age" value={{ag}} required title="Type in an age">
+            <input type="submit" class="btn btn-success {{#if nm}}up{{else}}ad{{/if}}" value="{{#if nm}}Update{{else}}Save{{/if}}" onclick="myFunction()">
+            {{#if nm}}
+            <input type="reset" class="btn btn-success up" value="Cancel">
+            {{/if}}
+        </form>
+
+</template>
+
+<template name="display">
+
+    <center>
+    <label>Search :</label>
+    <input type="text" id="myInput" onkeyup="myFunction()" 
+    placeholder="Search By Name" title="Type in a name">
+
+        <table border="1" id="myTable" class="table table-dark table-bordered table-striped">
+            <tr > <!-- active -->
+                <th class="{{selecedClass}} thname">Name</th>
+                <th class="{{selecedClass}} thcity">City</th>
+                <th class="{{selecedClass}} thage">Age</th>
+                <th class="{{selecedClass}}">Actions</th>
+            </tr>
+            {{#each contact}}
+
+            <tr class="contact showpage {{#if equals updatedClass _id   }} red {{/if}}">
+                  <td> {{name}} </td>
+                  <td> {{city}} </td>
+                  <td> {{age}} </td>
+                  <td> 
+                    <a href="/{{_id}}" class="show">&#9906;</a>
+                    <button class="edit">&#9986;</button>
+                    <button class="delete">&times;</button> 
+                </td>
+            </tr>
+            {{/each}}
+        </table>
+
+    </center>
+
+</template>
+
+
+<template name="showpage">
+<h1>Show Page</h1>  
+<h1>{{Id}}</h1>
+
+</template>

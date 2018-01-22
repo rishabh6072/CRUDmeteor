@@ -1,0 +1,87 @@
+/* CSS declarations go here */
+.adddatatemp, h1 {
+    text-align: center;
+}
+
+body {
+  font-family: 'Kavivanar', cursive;
+  font-size: 1.8em;
+}
+
+h1 {
+  font-family: 'Kavivanar', cursive;
+}
+.adddatatemp {
+    margin-bottom: 30px;
+    margin-top: 15px;
+}
+
+td, th {
+    padding-left: 10px;
+}
+
+th {
+  background: #5cb85c;
+  color: #fff;
+}
+
+.delete, .edit {
+  font-weight: bold;
+  background: none;
+  font-size: 1.4em;
+  border: none;
+  position: relative;
+  color: red;
+}
+.show {
+  font-weight: bold;
+  background: none;
+  font-size: 1em;
+  border: none;
+  position: relative;
+  color: blue;
+  float: left;
+  margin-top: 5px;
+}
+.edit {
+    color: orange;
+    font-size: 1.2em;
+}
+
+.up{
+  background: orange;
+  border-color: orange;  
+}
+
+.up:hover{
+  background: #fc8d25;
+  border-color: orange;  
+
+}
+.ad {
+  background: #5cb85c;
+}
+.table {
+    width: 70%;
+}
+.selected {
+  background: orange;
+}
+
+#myInput {
+  margin-bottom: 15px;
+}
+
+.red {
+  color: orange;
+  font-weight: 600;
+}
+
+.thname , .thcity, .thage {
+  cursor: pointer;
+}
+
+.add, .update {
+  text-align: center;
+  margin-bottom: 15px;
+}
