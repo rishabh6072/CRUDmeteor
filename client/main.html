@@ -87,8 +87,13 @@ function myFunction() {
 
 <template name="showpage">
 <h1>Show Page</h1>  
-<h1>{{Id}}</h1>
-
-
-<a href="/">Go Back</a>
+<div class="showpage bg-primary container">
+<h1>User Id : {{Id}}</h1>
+<h1>Name : {{show.name}}</h1>
+<h1>City : {{show.city}}</h1>
+<h1>Age : {{show.age}}</h1>
+<img class="pull-right" src="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png" width="120px">
+<a class="pull-right" href="/">Go Back</a>
+</div>
 </template>
+

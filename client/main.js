@@ -6,6 +6,10 @@ import './main.html';
 import { ContactList } from '../imports/api/contacts.js'; 
 require('bootstrap');
 
+Template.body.onCreated(function bodyOnCreated() {
+  this.state = new ReactiveDict();
+  Meteor.subscribe('contacts');
+});
 Template.adddata.events({
     'submit .add' : function(event){
         event.preventDefault();
@@ -76,7 +80,6 @@ Template.display.events({
       // 'click .show' : function(event) {
       //  var contactId = this._id;
       //  Session.set('selectedContact', contactId);
-      //  var test = ContactList.findOne({ _id: contactId });
       // },
 
       //SORTING 
@@ -132,7 +135,7 @@ Template.display.helpers({
    'updatedClass' : function() {
       var updated = Session.get('selectedContact2');
       return updated;
-   }
+   },
   
 });
 
@@ -178,7 +181,13 @@ Template.registerHelper('equals', function (a, b) {
 
 
 Template.showpage.helpers({
-  list(){
-    return 
-  }
+  'show': function(){
+    var Id = FlowRouter.getParam('_id');
+    console.log(Id);
+    var a = ContactList.findOne({ _id :Id });
+    console.log(a);
+    console.log(Template.instance());
+    return ContactList.findOne({ _id :Id });
+  },
+
 });

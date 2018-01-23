@@ -85,3 +85,13 @@ th {
   text-align: center;
   margin-bottom: 15px;
 }
+
+.showpage h1 {
+  text-align: left;
+}
+.showpage {
+  width: 70%;
+}
+.showpage>a {
+  color: red;
+}
