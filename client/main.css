@@ -6,10 +6,15 @@
 body {
   font-family: 'Kavivanar', cursive;
   font-size: 1.8em;
+  background: floralwhite;
 }
 
 h1 {
   font-family: 'Kavivanar', cursive;
+}
+h4 {
+  text-align: center;
+  color: orange;
 }
 .adddatatemp {
     margin-bottom: 30px;
@@ -95,3 +100,6 @@ th {
 .showpage>a {
   color: red;
 }
+/*.alert-danger {
+  position: absolute;
+}*/

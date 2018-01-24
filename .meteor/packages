@@ -25,3 +25,6 @@ kadira:flow-router
 zimme:active-route
 kadira:blaze-layout
 reactive-dict
+accounts-ui
+accounts-password
+mrt:flash-messages

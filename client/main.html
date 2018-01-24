@@ -32,13 +32,14 @@ function myFunction() {
 
 <template name="homeLayout">
   <h1>CRUD Practice</h1>
-
+  {{> loginButtons}}
+  {{> flashMessages}}
   {{> Template.dynamic template=input }}
   {{> Template.dynamic template=table }}
 </template>
 
 <template name="adddata">
-
+{{#if currentUser}}
         <form class="{{#if nm}}update{{else}}add{{/if}}">
             <input type="text" name="name" placeholder="Name" value={{nm}} required title="Type in a name">
             <input type="text" name="city" placeholder="City" value={{ct}} required title="Type in a city">
@@ -48,7 +49,10 @@ function myFunction() {
             <input type="reset" class="btn btn-success up" value="Cancel">
             {{/if}}
         </form>
+        {{else}}
+  <h4>Please Login To perform Actions</h4>
 
+{{/if}}
 </template>
 
 <template name="display">
@@ -63,7 +67,9 @@ function myFunction() {
                 <th class="{{selecedClass}} thname">Name</th>
                 <th class="{{selecedClass}} thcity">City</th>
                 <th class="{{selecedClass}} thage">Age</th>
+                {{#if currentUser}}
                 <th class="{{selecedClass}}">Actions</th>
+                {{/if}}
             </tr>
             {{#each contact}}
 
@@ -71,11 +77,13 @@ function myFunction() {
                   <td> {{name}} </td>
                   <td> {{city}} </td>
                   <td> {{age}} </td>
+                  {{#if currentUser}}
                   <td> 
                     <a href="/{{_id}}" class="show">&#9906;</a>
                     <button class="edit">&#9986;</button>
                     <button class="delete">&times;</button> 
-                </td>
+                  </td>
+                  {{/if}}
             </tr>
             {{/each}}
         </table>

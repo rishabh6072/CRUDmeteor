@@ -1,6 +1,8 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
+import { Meteor } from 'meteor/meteor';
 
+import '../imports/startup/accounts-config.js';
 import './main.html';
 // import '../lib/route.js';
 import { ContactList } from '../imports/api/contacts.js'; 
@@ -21,6 +23,8 @@ Template.adddata.events({
             name: NameVar,
             city: CityVar,
             age: AgeVar,
+            owner: Meteor.userId(),
+            username: Meteor.user().username,
         });
         event.target.name.value = "";
         event.target.city.value = "";
@@ -63,6 +67,7 @@ Template.display.events({
        Session.set('selectedContact', contactId);
        var selectedContact = Session.get('selectedContact');
        ContactList.remove({ _id: selectedContact });
+       // FlashMessages.sendError("Item Deleted!!");
        Session.set('selectedContact', '');
       },
       'click .edit' : function(event) {
@@ -183,11 +188,20 @@ Template.registerHelper('equals', function (a, b) {
 Template.showpage.helpers({
   'show': function(){
     var Id = FlowRouter.getParam('_id');
-    console.log(Id);
-    var a = ContactList.findOne({ _id :Id });
-    console.log(a);
-    console.log(Template.instance());
+    // console.log(Id);
+    // var a = ContactList.findOne({ _id :Id });
+    // console.log(a);
+    // console.log(Template.instance());
     return ContactList.findOne({ _id :Id });
   },
 
 });
+
+
+
+// FLash Messages Config
+  FlashMessages.configure({
+    autoHide: true,
+    hideDelay: 4000,
+    autoScroll: true
+  });
