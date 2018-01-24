@@ -69,6 +69,8 @@ function myFunction() {
                 <th class="{{selecedClass}} thage">Age</th>
                 {{#if currentUser}}
                 <th class="{{selecedClass}}">Actions</th>
+                {{else}}
+                <th>Owner's Name</th>
                 {{/if}}
             </tr>
             {{#each contact}}
@@ -90,6 +92,8 @@ function myFunction() {
                       {{/if}}
                     </button> 
                   </td>
+                  {{else}}
+                  <td>{{username}}</td>
                   {{/if}}
             </tr>
             {{/each}}
