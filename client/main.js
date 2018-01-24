@@ -131,7 +131,7 @@ Template.display.helpers({
         } else if(currentUserId) {
           return ContactList.find({owner: currentUserId}, { sort: {age: 1}});
         } else {
-          return ContactList.find({private: true}, { sort: {age: 1}});
+          return ContactList.find({}, { sort: {age: 1}});
           // return ContactList.find({$and: [{_id: {$ne: currentUserId}}, {private: true}]});
         }
 
