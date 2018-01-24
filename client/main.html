@@ -50,7 +50,7 @@ function myFunction() {
             {{/if}}
         </form>
         {{else}}
-  <h4>Please Login To perform Actions</h4>
+  <h4>Please login to get access to the app.</h4>
 
 {{/if}}
 </template>
@@ -78,10 +78,17 @@ function myFunction() {
                   <td> {{city}} </td>
                   <td> {{age}} </td>
                   {{#if currentUser}}
-                  <td> 
+                  <td class="{{#if private}}private{{/if}}"> 
                     <a href="/{{_id}}" class="show">&#9906;</a>
                     <button class="edit">&#9986;</button>
                     <button class="delete">&times;</button> 
+                    <button class="toggle-private view">
+                      {{#if private}}
+                        &#128065;
+                      {{else}}
+                        &straightphi;
+                      {{/if}}
+                    </button> 
                   </td>
                   {{/if}}
             </tr>

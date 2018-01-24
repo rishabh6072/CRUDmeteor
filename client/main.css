@@ -30,7 +30,7 @@ th {
   color: #fff;
 }
 
-.delete, .edit {
+.delete, .edit , .view {
   font-weight: bold;
   background: none;
   font-size: 1.4em;
@@ -52,7 +52,10 @@ th {
     color: orange;
     font-size: 1.2em;
 }
-
+.view {
+    color: green;
+    font-size: .9em;
+}
 .up{
   background: orange;
   border-color: orange;  

@@ -109,24 +109,30 @@ Template.display.events({
         Session.set('thage', true);
         console.log("you clicked on thage" + a )
       },
+       'click .toggle-private'() {
+        Meteor.call('contacts.setPrivate', this._id, !this.private);
+      },
      
 });
 
 
 Template.display.helpers({
    'contact' : function(){
-
+    var currentUserId = Meteor.userId();
        var thname = Session.get('thname');
        var thcity = Session.get('thcity');
        var thage = Session.get('thage');
         if(thname) {
-          return ContactList.find({}, { sort: {name: 1}});
+          return ContactList.find({owner: currentUserId}, { sort: {name: 1}});
         } else if(thcity){
-          return ContactList.find({}, { sort: {city: 1}});
+          return ContactList.find({owner: currentUserId}, { sort: {city: 1}});
         } else if(thage){
-          return ContactList.find({}, { sort: {age: 1}});
+          return ContactList.find({owner: currentUserId}, { sort: {age: 1}});
+        } else if(currentUserId) {
+          return ContactList.find({owner: currentUserId}, { sort: {age: 1}});
         } else {
-          return ContactList.find({}, { sort: {age: 1}});
+          return ContactList.find({private: true}, { sort: {age: 1}});
+          // return ContactList.find({$and: [{_id: {$ne: currentUserId}}, {private: true}]});
         }
 
    },
