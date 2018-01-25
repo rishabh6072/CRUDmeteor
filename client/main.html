@@ -82,6 +82,7 @@ function myFunction() {
                   {{#if currentUser}}
                   <td class="{{#if private}}private{{/if}}"> 
                     <a href="/{{_id}}" class="show">&#9906;</a>
+                  {{#if equals currentUser.username username  }}
                     <button class="edit">&#9986;</button>
                     <button class="delete">&times;</button> 
                     <button class="toggle-private view">
@@ -91,6 +92,7 @@ function myFunction() {
                         &#128065;
                       {{/if}}
                     </button> 
+                   {{/if}}
                   </td>
                   {{else}}
                   <td>{{username}}</td>

@@ -123,11 +123,11 @@ Template.display.helpers({
        var thcity = Session.get('thcity');
        var thage = Session.get('thage');
         if(thname) {
-          return ContactList.find({}, { sort: {name: 1}});
+          return ContactList.find({owner : currentUserId}, { sort: {name: 1}});
         } else if(thcity){
-          return ContactList.find({}, { sort: {city: 1}});
+          return ContactList.find({owner : currentUserId}, { sort: {city: 1}});
         } else if(thage){
-          return ContactList.find({}, { sort: {age: 1}});
+          return ContactList.find({owner : currentUserId}, { sort: {age: 1}});
         } else if(currentUserId) {
           return ContactList.find({}, { sort: {age: 1}});
         } else {
@@ -173,6 +173,9 @@ Template.registerHelper('equals', function (a, b) {
       return a === b;
     });
 
+//Template.registerHelper('notEquals', function (a, b) {
+//      return a !== b;
+//   });
 
 
 
